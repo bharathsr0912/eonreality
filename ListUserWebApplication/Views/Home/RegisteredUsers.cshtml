@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ListUserWebApplication.Model.UsersViewModel>
+@{
+    ViewData["Title"] = "RegisteredUsers";
+}
+<script src="~/js/RegisteredUsers.js"></script>
+
+
+<div id="showAllUsers">
+
+    <p>
+        <input type="button" value="AddNew" onclick="NewClick()" />
+    </p>
+
+    <h2>
+        List of Registered Users
+    </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Sl No
+                </th>
+
+                <th>
+                    Name
+                </th>
+
+                <th>
+                    Email
+                </th>
+
+                <th>
+                    Gender
+                </th>
+
+                <th>
+                    Date Reg
+                </th>
+
+                <th>
+                    Selected Days
+                </th>
+
+                <th>
+                    Add Request
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td> @user.ID </td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Gender</td>
+                    <td>@user.DateRegistered</td>
+                    <td>@user.selectedDays</td>
+                    <td>@user.AdditionalRequest</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<form action="AddNewUser()">
+    <div id="newUserRegister" class="hidediv">
+        <div class="row">
+            Name                :   <input type="text" class="form-control values" id="name" required />
+        </div>
+
+        <div class="row">
+            Email               :   <input type="text" class="form-control values" id="email" required />
+        </div>
+
+        <div class="row">
+            Gender              :  Male : <input type="radio" name="gender" value="M" id="male" />   Female : <input type="radio" name="gender" value="F" id="male" />
+        </div>
+        <div class="row">
+            DateRegistered      :   <input type="text" class="form-control values" id="dateofreg" required />
+        </div>
+        <div class="row">
+            selectedDays        :   <input type="checkbox" name="Day" value="Day 1"> Day 1
+            <input type="checkbox" name="Day" value="Day 2"> Day 2
+            <input type="checkbox" name="Day" value="Day 3"> Day 3
+        </div>
+        <div class="row">
+            AdditionalRequest   :   <input type="text" class="form-control values" id="addReq" />
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+</form>
+<style>
+    .hidediv{
+        display:none
+    }
+</style>
