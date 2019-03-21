@@ -18,17 +18,25 @@ namespace ListEmployeeAPI.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Methoth get all registered user
+        /// </summary>
+        /// <returns>return list of user</returns>
         [HttpGet]
-        //[Route("RegisteredUser")]
         public List<UsersBusinessModel> GetAllUsers()
         {
             return _context.Users.ToList();
         }
 
+        /// <summary>
+        /// Method to add new user
+        /// </summary>
+        /// <param name="userModel">userModel as Object</param>
+        /// <returns>return list of registered users</returns>
         [HttpPost]
-        //[Route("RegisteredUser")]
         public List<UsersBusinessModel> AddUser([FromBody]UsersBusinessModel userModel)
         {
+            userModel.selectedDays = userModel.selectedDays.Substring(1);
             _context.Users.Add(userModel);
             _context.SaveChanges();
             return _context.Users.ToList();
