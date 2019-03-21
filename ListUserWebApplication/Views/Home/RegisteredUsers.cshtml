@@ -64,14 +64,16 @@
     </table>
 </div>
 
-<form action="AddNewUser()">
+<form>
     <div id="newUserRegister" class="hidediv">
         <div class="row">
             Name                :   <input type="text" class="form-control values" id="name" required />
+            <span id="nameRequired" class="errorclass">Name Required</span>
         </div>
 
         <div class="row">
             Email               :   <input type="text" class="form-control values" id="email" required />
+            <span id="emailRequired" class="errorclass">Email Required</span>
         </div>
 
         <div class="row">
@@ -79,6 +81,7 @@
         </div>
         <div class="row">
             DateRegistered      :   <input type="text" class="form-control values" id="dateofreg" required />
+            <span id="dateRequired" class="errorclass">Date Registered Required</span>
         </div>
         <div class="row">
             selectedDays        :   <input type="checkbox" name="Day" value="Day 1"> Day 1
@@ -90,12 +93,17 @@
         </div>
 
         <div class="row">
-            <input type="submit" value="Submit" />
+            <input type="button" value="Submit" onclick="AddNewUser()" />
         </div>
     </div>
 </form>
 <style>
     .hidediv{
         display:none
+    }
+
+    .errorclass {
+        color: red;
+        display: none;
     }
 </style>

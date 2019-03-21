@@ -20,6 +20,10 @@ namespace ListUserWebApplication.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Method to call web api to get all registered users
+        /// </summary>
+        /// <returns>return back to view</returns>
         public async Task<IActionResult> RegisteredUsers()
         {
             List<UsersViewModel> users = new List<UsersViewModel>();
@@ -35,6 +39,11 @@ namespace ListUserWebApplication.Controllers
             return View(users);
         }
 
+        /// <summary>
+        /// Method to call web api to add new user
+        /// </summary>
+        /// <param name="userModel">userModel as ObjectS</param>
+        /// <returns>return back to view</returns>
         [HttpPost]
         public IActionResult AddUsers(UsersViewModel userModel)
         {
@@ -45,7 +54,6 @@ namespace ListUserWebApplication.Controllers
             response = client.PostAsJsonAsync("api/User/", userModel).Result;
             if (response.IsSuccessStatusCode)
             {
-                //return this.RedirectToAction("RegisteredUsers");
                 var result = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<List<UsersViewModel>>(result);
             }
